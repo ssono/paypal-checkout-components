@@ -244,7 +244,7 @@
                     style: {
                         layout: 'horizontal',
                         shape,
-                        tagline: false
+                        tagline: true
                     },
                     fundingEligibility: {
                         paypal: {
@@ -270,7 +270,7 @@
                     style: {
                         layout: 'horizontal',
                         label,
-                        tagline: false
+                        tagline: true
                     },
                     fundingEligibility: {
                         applepay: {
@@ -295,7 +295,7 @@
                 buttonOpts.push({
                     style: {
                         layout: 'horizontal',
-                        tagline: false
+                        tagline: true
                     },
                     fundingEligibility: {
                         paypal: {
@@ -329,7 +329,7 @@
                 buttonOpts.push({
                     style: {
                         layout: 'horizontal',
-                        tagline: false
+                        tagline: true
                     },
                     fundingEligibility: {
                         paypal: {
@@ -388,7 +388,7 @@
                     buttonOpts.push({
                         style: {
                             layout: 'horizontal',
-                            tagline: false
+                            tagline: true
                         },
                         fundingEligibility: {
                             paypal: {
@@ -524,7 +524,7 @@
                 });
             }
 
-            for (const fundingSource of Object.values(constants.FUNDING)) {
+            for (const fundingSource of ['paypal']) {
                 buttonOpts.push({
                     fundingSource,
                     fundingEligibility: {
@@ -584,9 +584,7 @@
                 const button = paypal.Buttons(opts);
                 if (button.isEligible()) {
                     const p = document.createElement('p');
-                    if (width) {
-                        p.style.minWidth = width; 
-                    }
+                    p.style.minWidth = width || '450px'; 
                     document.body.appendChild(p);
                     button.render(p);
                 } else {

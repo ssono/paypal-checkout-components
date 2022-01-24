@@ -29,12 +29,10 @@ export const getButtonsComponent : () => ButtonsComponent = memoize(() => {
     let personalizations;
 
     // get server-side eligible personalizations
-    if (!__WEB__) {
-        getPersonalizations().then(experiments => {
-            getLogger().info('personalizations', { experiments: JSON.stringify(experiments) }).flush();
-            personalizations = experiments;
-        });
-    }
+    getPersonalizations().then(experiments => {
+        // getLogger().info('personalizations', { experiments: JSON.stringify(experiments) }).flush();
+        personalizations = experiments;
+    });
 
     const queriedEligibleFunding = [];
 
